@@ -1,0 +1,73 @@
+doctype html
+html
+  head
+    title= title
+    meta(charset="UTF-8" http-equiv="X-UA-Compatible" content="IE=edge")
+    meta(name="viewport" content="width=device-width, initial-scale=1.0")
+    link(rel="stylesheet" href="dist/css/bootstrap.css")
+    link(rel="stylesheet" href="css/request.css")
+    link(rel="stylesheet" href="css/nav-bar.css")
+    script(src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js")
+    script(src="dist/js/bootstrap.js")
+    script(src="js/nav-bar.js" defer="true")
+  body
+    main
+      div.d-flex.flex-row
+        div#navigation
+          include nav-bar.pug
+        div.flex-grow-1.bg-light
+          div#titleContainer.card.p-3
+            h2.text-center Request An Appointment
+          div.container-fluid
+            div.bg-light.row.g-2.p-5
+              form#patientInformation.card.p-3.mr-3.col(action='' method='POST')
+                h3.text-center Patient Information
+                div.d-flex.flex-column.my-2
+                  label(for="org").form-label Organization
+                  input(type="text" name="org" required="true")#org.form-control
+                div.d-flex.flex-column.my-2
+                  label(for="appointmentDate").form-label Appointment Date
+                  input(type="date" name="appointmentDate" required="true")#date.form-control
+                div.d-flex.flex-column.my-2
+                  label(for="appointmentTime").form-label Appointment Time
+                  input(type="time" name="appointmentTime" required="true")#time.form-control
+                div.d-flex.flex-column.my-2
+                  label(for="tel").form-label Phone Number
+                  input(type="text" name="tel" required="true")#tel.form-control
+                div.d-flex.flex-column.my-2
+                  label(for="fname").form-label First Name
+                  input(type="text" name="fname" required="true")#fname.form-control
+                div.d-flex.flex-column.my-2
+                  label(for="lname").form-label Last Name
+                  input(type="text" name="lname" required="true")#lname.form-control
+                div.d-flex.flex-column.my-2
+                  label(for="fileNumber").form-label File Number
+                  input(type="text" name="fileNumber" required="true")#fileNumber.form-control
+                h3.text-center.mt-2 Appointment Information
+                div#tripDirContainer.my-2
+                  div.form-check
+                    input(type="radio" name="tripDirection" value="one way")#oneWay.form-check-input
+                    label(for="oneWay").form-check-label One Way
+                  div.form-check
+                    input(type="radio" name="tripDirection" value="round trip")#roundTrip.form-check-input
+                    label(for="roundTrip").form-check-label Round Trip
+                  div.form-check
+                    input(type="radio" name="tripDirection" value="multiway trip")#multiLeg.form-check-input
+                    label(for="multiLeg").form-check-label Multi Leg
+                div.d-flex.flex-column.my-2
+                  label(for="appointmentType").form-label Appointment Type
+                  input(type="text" name="appointmentType" required="true")#appType.form-control
+                div.d-flex.flex-column.my-2
+                  label(for="arrivalAddress").form-label Arrival Address
+                  input(type="text" name="arrivalAddress" required="true")#arrAddr.form-control
+                div.d-flex.flex-column.my-2
+                  label(for="destinationAddress").form-label Destination Addres
+                  input(type="text" name="destinationAddress" required="true")#destAddr.form-control
+                div.d-flex.flex-column.my-2
+                  label(for="notesToDriver").form-label Notes To Driver 
+                  textarea(name="notesToDriver" rows="5")#notesToDriver.form-control
+                div.mt-2.d-flex.justify-content-center.p-1.h-100
+                  button(type="submit")#estimates.btn.btn-success Get Estimates
+              div(style='background-image: url(/public/images/GoogleMap.webp)')#map.card.col.ml-3
+          div#providers.mb-5.mx-5          
+    script(src="js/request.js" defer="true")
